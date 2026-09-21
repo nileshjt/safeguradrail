@@ -1,5 +1,7 @@
 # Safeguradrail
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-0f6b5c.svg)](LICENSE)
+
 A guardrail platform for organisations whose finance tools are used through browsers that also run AI extensions.
 
 AI sidebars, summarisers, autofill helpers and autonomous browser agents get the same access to your accounts-payable, ERP, payroll and banking portals as the employee who installed them. The finance tool cannot tell them apart, and it logs everything as the employee. Safeguradrail puts a rail between the two.
