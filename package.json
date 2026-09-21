@@ -7,7 +7,7 @@
   "engines": { "node": ">=20" },
   "scripts": {
     "start": "node server/index.js",
-    "test": "node --test \"test/**/*.test.js\"",
+    "test": "node --test",
     "reset": "node -e \"require('fs').rmSync('server/data',{recursive:true,force:true});console.log('state cleared')\""
   },
   "license": "MIT"
