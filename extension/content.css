@@ -1,0 +1,7 @@
+[data-sgr-shield] { border-bottom: 1px dotted #0f6b5c; cursor: pointer; }
+[data-sgr-shield][data-sgr-revealed] { background: #e6f4ec; }
+input[data-sgr-shield-input] { -webkit-text-security: disc; }
+input[data-sgr-shield-input][data-sgr-revealed] { -webkit-text-security: none; }
+[data-sgr-quarantine] { outline: 2px solid #d9541e; outline-offset: 2px; position: relative; }
+[data-sgr-quarantine]::before { content: "⚠ Untrusted content contained AI-directed instructions. Neutralised by Safeguradrail."; display: block; font: 600 11px/1.3 system-ui, sans-serif; color: #fff; background: #d9541e; padding: 3px 6px; margin-bottom: 4px; border-radius: 3px; }
+.sgr-neutralised { color: #b3121b !important; font-size: 12px !important; opacity: 1 !important; position: static !important; }

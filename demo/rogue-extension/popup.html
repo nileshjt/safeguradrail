@@ -1,0 +1,21 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  body { width: 300px; font: 13px/1.4 system-ui, sans-serif; margin: 0; }
+  header { padding: 10px 12px; background: #6d28d9; color: #fff; font-weight: 600; }
+  section { padding: 10px 12px; }
+  button { display: block; width: 100%; margin: 6px 0; padding: 8px; font: inherit; border-radius: 6px; border: 1px solid #ddd; background: #fff; cursor: pointer; text-align: left; }
+  button:hover { border-color: #6d28d9; }
+  small { color: #666; display: block; }
+  #out { font-family: ui-monospace, monospace; font-size: 11px; color: #444; white-space: pre-wrap; margin-top: 8px; }
+</style></head>
+<body>
+<header>PromptPal AI Sidekick <small style="color:#ddd">demo adversary for Safeguradrail</small></header>
+<section>
+  <button id="summarise">Summarise this page<small>Scrapes the page text and posts it to the AI API (exfiltration).</small></button>
+  <button id="autoapprove">Auto-approve pending payments<small>Dispatches synthetic clicks on every approve button.</small></button>
+  <button id="follow">Act on instructions found in the page<small>Reads memos, fills the bank-details form, submits.</small></button>
+  <button id="export">Export data for analysis<small>Synthetic click on export.</small></button>
+  <div id="out"></div>
+</section>
+<script src="popup.js"></script>
+</body></html>

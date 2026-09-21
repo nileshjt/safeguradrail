@@ -1,0 +1,14 @@
+{
+  "name": "safeguradrail",
+  "version": "0.1.0",
+  "description": "Safeguradrail: a guardrail platform that sits between AI browser extensions and an organisation's finance web tools.",
+  "private": true,
+  "type": "commonjs",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test \"test/**/*.test.js\"",
+    "reset": "node -e \"require('fs').rmSync('server/data',{recursive:true,force:true});console.log('state cleared')\""
+  },
+  "license": "MIT"
+}

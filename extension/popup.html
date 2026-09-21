@@ -1,0 +1,40 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Safeguradrail Sentinel</title>
+<style>
+  body { width: 360px; margin: 0; font: 13px/1.45 system-ui, sans-serif; color: #1c2430; }
+  header { padding: 12px 14px; background: #0f6b5c; color: #fff; display: flex; justify-content: space-between; align-items: center; }
+  header b { font-size: 14px; } header span { font-size: 11px; opacity: .85; }
+  section { padding: 10px 14px; border-bottom: 1px solid #dfe4ea; }
+  h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #5f6b7a; margin: 0 0 6px; }
+  .kv { display: flex; justify-content: space-between; gap: 8px; padding: 2px 0; } .kv span:last-child { font-family: ui-monospace, monospace; font-size: 12px; text-align: right; }
+  .ok { color: #1f8a4c; } .bad { color: #b3121b; }
+  ul { margin: 0; padding: 0; list-style: none; } li { padding: 4px 0; border-top: 1px dashed #dfe4ea; display: flex; justify-content: space-between; gap: 8px; }
+  .tag { font-size: 10px; padding: 0 6px; border-radius: 4px; border: 1px solid #dfe4ea; white-space: nowrap; } .tag.ai { background: #fdeaea; border-color: #e5b3b3; color: #b3121b; }
+  input { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #dfe4ea; border-radius: 6px; font: inherit; margin-bottom: 6px; }
+  button { font: inherit; padding: 6px 10px; border-radius: 6px; border: 1px solid #dfe4ea; background: #fff; cursor: pointer; margin-right: 4px; }
+  button.primary { background: #0f6b5c; color: #fff; border-color: #0f6b5c; }
+</style></head>
+<body>
+<header><b>Safeguradrail Sentinel</b><span id="ver"></span></header>
+<section>
+  <h2>Status</h2>
+  <div class="kv"><span>Device</span><span id="device">…</span></div>
+  <div class="kv"><span>Policy</span><span id="policy">…</span></div>
+  <div class="kv"><span>Egress enforcement</span><span id="egress">…</span></div>
+  <div class="kv"><span>Protected tabs open</span><span id="tabs">…</span></div>
+  <div class="kv"><span>Events queued</span><span id="queued">…</span></div>
+</section>
+<section>
+  <h2>Extensions on this browser</h2>
+  <ul id="census"><li>loading…</li></ul>
+</section>
+<section>
+  <h2>Control plane</h2>
+  <input id="cp" placeholder="http://localhost:4173">
+  <input id="label" placeholder="Device label (e.g. finance-laptop-07)">
+  <button class="primary" id="save">Save & sync</button>
+  <button id="census-now">Census now</button>
+  <button id="console">Open console</button>
+</section>
+<script src="popup.js"></script>
+</body></html>

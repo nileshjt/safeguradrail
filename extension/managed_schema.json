@@ -1,0 +1,7 @@
+{
+  "type": "object",
+  "properties": {
+    "controlPlaneUrl": { "type": "string", "description": "Base URL of the Safeguradrail control plane, e.g. https://sgr.example.com" },
+    "deviceLabel": { "type": "string", "description": "Human-readable label for this device shown in the console" }
+  }
+}

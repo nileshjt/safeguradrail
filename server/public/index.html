@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Safeguradrail Console</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="rail"></span><strong>Safeguradrail</strong><span class="muted">control plane</span></div>
+  <nav>
+    <button data-tab="overview" class="active">Overview</button>
+    <button data-tab="alerts">Alerts <span id="alertBadge" class="badge"></span></button>
+    <button data-tab="approvals">Approvals <span id="approvalBadge" class="badge"></span></button>
+    <button data-tab="events">Events</button>
+    <button data-tab="extensions">Extension census</button>
+    <button data-tab="risk">Risk model</button>
+    <button data-tab="ledger">Ledger</button>
+  </nav>
+  <div class="status"><span id="ledgerState" class="pill"></span><span id="policyState" class="pill"></span></div>
+</header>
+
+<main>
+  <section id="tab-overview" class="tab active">
+    <div class="cards" id="cards"></div>
+    <div class="two">
+      <div class="panel">
+        <h2>Enrolled devices</h2>
+        <table id="devices"><thead><tr><th>Device</th><th>Risk</th><th>AI ext.</th><th>Egress</th><th>Last seen</th><th>Chains</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div class="panel">
+        <h2>Simulate a scenario</h2>
+        <p class="muted">Pushes a realistic event sequence for a synthetic device so you can see scoring, chains, and alerts without loading the extension.</p>
+        <div class="row">
+          <button class="sim" data-scenario="scrape-and-approve">Scrape, then auto-approve</button>
+          <button class="sim" data-scenario="injected-bank-change">Injected bank change</button>
+          <button class="sim" data-scenario="bulk-harvest">Bulk harvest</button>
+          <button class="sim" data-scenario="rail-tamper">Rail tamper</button>
+        </div>
+        <h2 style="margin-top:20px">Protected apps</h2>
+        <ul id="apps" class="plain"></ul>
+        <h2 style="margin-top:20px">Events by family</h2>
+        <ul id="families" class="plain"></ul>
+        <p class="row" style="margin-top:20px"><button id="resetBtn" class="danger">Reset all state</button></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-alerts" class="tab">
+    <div class="panel"><h2>Alerts</h2><div id="alerts" class="list"></div></div>
+  </section>
+
+  <section id="tab-approvals" class="tab">
+    <div class="panel">
+      <h2>Dual-control approvals</h2>
+      <p class="muted">High-risk actions in the finance tool are held until a second person approves here. The requesting browser is polling; the approver is never the same session that raised the request.</p>
+      <div id="approvals" class="list"></div>
+    </div>
+  </section>
+
+  <section id="tab-events" class="tab">
+    <div class="panel"><h2>Event stream</h2>
+      <table id="events"><thead><tr><th>Time</th><th>Device</th><th>Code</th><th>Severity</th><th>Title</th><th>Detail</th><th>Provenance</th></tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section id="tab-extensions" class="tab">
+    <div class="panel"><h2>Extension census</h2>
+      <p class="muted">Every extension installed alongside Sentinel, classified by AI likelihood and capability. Unsanctioned AI tools with page access on finance origins are the primary actor in this threat model.</p>
+      <div id="census"></div>
+    </div>
+  </section>
+
+  <section id="tab-risk" class="tab">
+    <div class="panel"><h2>Risk permutations</h2>
+      <p class="muted">Each code is one detectable permutation of actor × capability × asset × operation × vector. Chains combine codes across time.</p>
+      <div id="dims" class="dims"></div>
+      <table id="taxonomy"><thead><tr><th>Code</th><th>Family</th><th>Severity</th><th>Permutation</th><th>Dimensions</th><th>Detected by</th></tr></thead><tbody></tbody></table>
+      <h2 style="margin-top:24px">Attack chains</h2>
+      <table id="chains"><thead><tr><th>Chain</th><th>Level</th><th>Steps</th><th>Window</th><th>Meaning</th></tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section id="tab-ledger" class="tab">
+    <div class="panel"><h2>Hash-chained ledger</h2>
+      <p id="ledgerVerify" class="muted"></p>
+      <table id="ledger"><thead><tr><th>#</th><th>Time</th><th>Type</th><th>Data</th><th>Hash</th></tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

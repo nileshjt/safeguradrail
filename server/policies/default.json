@@ -1,0 +1,77 @@
+{
+  "version": "2026.09.21-1",
+  "organisation": "Example Finance Ltd",
+  "controlPlane": { "heartbeatSeconds": 60, "censusSeconds": 300, "flushSeconds": 5 },
+
+  "protectedApps": [
+    {
+      "id": "ledgerly-ap",
+      "name": "Ledgerly AP (demo accounts-payable portal)",
+      "origins": ["http://localhost:4173", "http://127.0.0.1:4173"],
+      "pathPrefix": "/demo",
+      "dataClasses": ["D1", "D3", "D6", "D7", "D8"],
+      "shield": {
+        "selectors": ["[data-sensitive]", "td", ".detail-value", "input", "dd"],
+        "revealSeconds": 8,
+        "maskInputs": true
+      },
+      "untrustedContent": {
+        "selectors": ["[data-untrusted]", ".memo", ".notes", ".attachment-preview", ".remittance"]
+      },
+      "actions": [
+        {
+          "id": "approve-payment",
+          "label": "Approve & release payment",
+          "category": "approve",
+          "selector": "[data-action='approve-payment']",
+          "event": "click",
+          "control": "dual-control",
+          "context": { "invoice": "[data-field='invoice']", "payee": "[data-field='payee']", "amount": "[data-field='amount']", "iban": "[data-field='iban']" }
+        },
+        {
+          "id": "update-vendor-bank",
+          "label": "Change vendor bank details",
+          "category": "bank-change",
+          "selector": "form[data-action='update-vendor-bank']",
+          "event": "submit",
+          "control": "step-up",
+          "context": { "vendor": "[name='vendor']", "iban": "[name='iban']", "swift": "[name='swift']" }
+        },
+        {
+          "id": "export-ledger",
+          "label": "Export ledger / payroll",
+          "category": "export",
+          "selector": "[data-action='export']",
+          "event": "click",
+          "control": "deny-synthetic"
+        },
+        {
+          "id": "raise-limit",
+          "label": "Change approval limit",
+          "category": "config",
+          "selector": "form[data-action='raise-limit']",
+          "event": "submit",
+          "control": "dual-control",
+          "context": { "limit": "[name='limit']" }
+        },
+        {
+          "id": "dismiss-warning",
+          "label": "Dismiss duplicate-invoice warning",
+          "category": "dismiss",
+          "selector": "[data-action='dismiss-warning']",
+          "event": "click",
+          "control": "deny-synthetic"
+        }
+      ]
+    }
+  ],
+
+  "sanctionedExtensions": [],
+  "aiEndpoints": [],
+  "egress": { "mode": "block", "blockUnknownWithCanary": true },
+  "clipboard": { "mode": "redact" },
+  "rail": { "maxActionsPerMinute": 12, "presenceWindowMs": 4000, "minPointerSamples": 5, "approvalTimeoutSeconds": 300 },
+  "census": {
+    "aiKeywords": ["ai", "gpt", "chatgpt", "openai", "claude", "gemini", "copilot", "assistant", "llm", "summar", "autofill", "agent", "writer", "compose", "rewrite", "sidekick", "sidebar", "chat", "bot", "genai", "prompt", "monica", "sider", "merlin", "harpa", "jasper", "grammarly", "perplexity"]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "PromptPal AI Sidekick (demo adversary)",
+  "version": "0.1.0",
+  "description": "AI assistant that summarises any page and can act for you. Test adversary for Safeguradrail: it scrapes pages, posts them to an AI API, and drives the UI with synthetic input.",
+  "permissions": ["tabs", "scripting", "activeTab", "storage", "clipboardRead"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{ "matches": ["<all_urls>"], "js": ["content.js"], "run_at": "document_idle" }],
+  "action": { "default_popup": "popup.html", "default_title": "PromptPal AI Sidekick" }
+}
