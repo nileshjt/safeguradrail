@@ -1,6 +1,7 @@
 # Safeguradrail
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-0f6b5c.svg)](LICENSE)
+[![tests](https://github.com/nileshjt/safeguradrail/actions/workflows/tests.yml/badge.svg)](https://github.com/nileshjt/safeguradrail/actions/workflows/tests.yml)
 
 A guardrail platform for organisations whose finance tools are used through browsers that also run AI extensions.
 
